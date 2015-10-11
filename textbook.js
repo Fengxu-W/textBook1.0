@@ -3,17 +3,17 @@
  */
 
 var datatable = null;
-//´´½¨·ÃÎÊÊý¾Ý¿âµÄ¶ÔÏó,(¿âÃû£¬°æ±¾ºÅ£¬ÃèÊö£¬Êý¾Ý¿â´óÐ¡)
+//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ý¿ï¿½Ä¶ï¿½ï¿½ï¿½,(ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½æ±¾ï¿½Å£ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ý¿ï¿½ï¿½Ð¡)
 var db = openDatabase("Mydata","","My Database",1024*100);
 
 function init(){
-    //³õÊ¼»¯µ÷ÓÃ
+    //ï¿½ï¿½Ê¼ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
     datatable = document.getElementById("datatable");
     showAllData();
 }
 
 function removeAllData(){
-    //ÒÆ³ýËùÓÐÊý¾Ý
+    //ï¿½Æ³ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
     var content = document.getElementsByName("content");
     for(var i=0; i<content.length; i++){
         content[i].parentNode.removeChild(content[i]);
@@ -21,7 +21,7 @@ function removeAllData(){
 }
 
 function showData(row){
-    //ÏÔÊ¾Êý¾Ý
+    //ï¿½ï¿½Ê¾ï¿½ï¿½ï¿½ï¿½
     var t = new Date();
     t.setTime(row.time);
     var divStr = '<div class="panel panel-primary" name="content"><div class="panel-heading"><h3 class="panel-title">';
@@ -35,11 +35,11 @@ function showData(row){
 }
 
 function showAllData(){
-    //ÏÔÊ¾ËùÓÐÊý¾Ý
-    //Ê¹ÓÃtransation½øÐÐÊÂÎñ´¦Àí
+    //ï¿½ï¿½Ê¾ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+    //Ê¹ï¿½ï¿½transationï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
     db.transaction(function(tx){
 
-        //´´½¨Êý¾Ý¿â
+        //ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ý¿ï¿½
         tx.executeSql("create table if not exists MsgData(name TEXT,message TEXT,time INTEGER)",[]);
         tx.executeSql("select * from MsgData",[], function (tx,rs) {
             removeAllData();
